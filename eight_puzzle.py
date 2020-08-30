@@ -32,8 +32,9 @@ def scramble():
     for move in scramble:
         if move in puzzle.actions(state):
             state = list(puzzle.result(state, move))
-            puzzle = EightPuzzle(tuple(state))
-            create_buttons()
+    
+    puzzle = EightPuzzle(tuple(state))
+    create_buttons()
 
 
 def solve():
@@ -55,7 +56,7 @@ def solve_steps():
         state = puzzle.result(state, move)
         create_buttons()
         root.update()
-        root.after(1, time.sleep(0.75))
+        root.after(1, time.sleep(0.2))
 
 
 def exchange(index):
@@ -147,5 +148,9 @@ def init():
     create_static_buttons()
 
 
-init()
-root.mainloop()
+# init()
+# root.mainloop()
+
+if __name__=='__main__':
+    scramble()
+    print(solve())
