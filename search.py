@@ -425,12 +425,10 @@ def astar_search(problem, h=None, display=False):
 # A* heuristics 
 
 class NPuzzle(Problem):
-    def __init__(self,initial,N):
-        self.N = N 
-        self.width = int(math.sqrt(N+1))
-        self.goal = tuple(range(N))
-        self.initial = initial
-        
+    def __init__(self,initial,goal):
+        super().__init__(initial,goal)
+        self.N = len(goal) - 1
+        self.width = int(math.sqrt(self.N+1))
     
     def find_blank_square(self,state):
         return state.index(0)
